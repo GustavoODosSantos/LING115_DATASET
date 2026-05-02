@@ -1,0 +1,57 @@
+# Random Sampler — README
+
+a short Python script that takes 100 random rows from each of the four Excel files (mustNOW.xlsx, shouldNOW.xlsx, deveNOW.xlsx, precisaNOW.xlsx) and combines them into one file with an empty column for annotation. The output file is called `samples_to_annotate.xlsx` and contains 400 rows total (100 per verb), ready for manual annotation.
+
+## What you need
+
+- The script: `simple_sampler.py`
+- The four Excel files from the NOW corpus:
+    - mustNOW.xlsx
+    - shouldNOW.xlsx
+    - deveNOW.xlsx
+    - precisaNOW.xlsx
+
+All five files must be in the same folder.
+
+## How to run it
+
+### Option 1 — Run on your computer
+
+1. Make sure Python is installed.
+2. Open Terminal (Mac) or Command Prompt (Windows).
+3. Go to the folder where the script and the Excel files are saved.
+4. Install the required libraries:
+       pip install pandas openpyxl
+5. Run the script:
+       python simple_sampler.py
+6. When it's done, you'll see:
+       Done! 400 rows saved to samples_to_annotate.xlsx
+   The new file will appear in the same folder.
+
+### Option 2 — Run in Google Colab (no installation needed)
+
+1. Go to https://colab.research.google.com
+2. Click "New Notebook."
+3. Upload the four Excel files using the folder icon on the left sidebar.
+4. Paste the contents of `simple_sampler.py` into a code cell.
+5. Click the play button to run it.
+6. Download the new file `samples_to_annotate.xlsx` from the file panel.
+
+## What the script does
+
+1. Opens each of the four Excel files.
+2. Picks 100 random rows from each file.
+3. Combines all 400 rows into one new file.
+4. Adds an empty column called "Annotation" at the end of the file.
+5. Saves the result as `samples_to_annotate.xlsx`.
+
+## How to annotate
+
+Open `samples_to_annotate.xlsx` and fill in the "Annotation" column with
+one of the following labels for each row:
+
+- O — Obligation (strong requirement, no real alternative)
+- R — Recommendation (advice, preferred action, weaker obligation)
+- P — Probability (inference, likelihood, epistemic judgment)
+- X — Other (ambiguous, idiomatic, or unclear from context)
+
