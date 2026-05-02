@@ -1,0 +1,39 @@
+# Dual Annotator — README
+
+This script applies two rule-based classifiers to 100 manually
+annotated tokens and reports how often each classifier matches the
+manual labels.
+
+## What it does
+
+1. Reads `50samples.xlsx` (100 manually annotated modal verbs).
+2. Runs two classifiers on each token:
+   - **A**: defaults to Obligation unless context clearly
+     signals Recommendation or Probability.
+   - **B**: uses a weighted scoring system, allowing softer
+     cues (hedging, inclusive phrasing) to push toward R or P.
+3. Compares each classifier to the manual labels.
+4. Saves results to `dual_annotator_validation.xlsx`.
+5. Prints accuracy stats to the terminal.
+
+## Categories
+
+- **O** — Obligation
+- **R** — Recommendation
+- **P** — Probability
+- **X** — Other (manual only; classifiers don't predict X)
+
+## How to run
+
+```
+pip install pandas openpyxl
+python dual_annotator.py
+```
+
+`50samples.xlsx` must be in the same folder.
+
+## Files
+
+- `dual_annotator.py` — the script
+- `50samples.xlsx` — input (100 annotated tokens)
+- `dual_annotator_validation.xlsx` — output
